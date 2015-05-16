@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="report_invoice_document_inherit" inherit_id="account.report_invoice_document">
+            <xpath expr="//table[@class='table table-condensed']/following-sibling::div[1]" position="after">
+                <p>
+                    <strong>Terbilang:</strong>
+                    # <span t-esc="o.amount_to_text(o.amount_total, 'idr')"/> #
+                </p>
+            </xpath>
+        </template>
+    </data>
+</openerp>
