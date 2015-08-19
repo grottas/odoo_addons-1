@@ -1,4 +1,4 @@
-# Recore Terbilang
+# Module Terbilang
 An Odoo 8.0 module that adds amount in words in the invoice in Bahasa Indonesia.
 
 Usage:
