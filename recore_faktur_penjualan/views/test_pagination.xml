@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<template id="recore_test_pagination.report_test_pagination_document">
+			<t t-call="recore_test_pagination.test_pagination_external_layout">
+				<div class="page">
+					<div class="row">
+						<div class="col-xs-2 col-xs-offset-5">
+							<strong>Pelanggan:</strong>
+						</div>
+						<div class="col-xs-5">
+							<address t-field="o.partner_id"
+                        t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}' />
+							<span t-if="o.partner_id.vat">TIN: <span t-field="o.partner_id.vat"/></span>
+						</div>
+					</div>
+
+					<h2 style="margin-top: 4px; margin-bottom: 4px">
+						<span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">Invoice</span>
+						<span t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PRO-FORMA</span>
+						<span t-if="o.type == 'out_invoice' and o.state == 'draft'">Draft Invoice</span>
+						<span t-if="o.type == 'out_invoice' and o.state == 'cancel'">Cancelled Invoice</span>
+						<span t-if="o.type == 'out_refund'">Refund</span>
+						<span t-if="o.type == 'in_refund'">Supplier Refund</span>
+						<span t-if="o.type == 'in_invoice'">Supplier Invoice</span>
+						<span t-field="o.number"/>
+					</h2>
+
+					<div class="row mt16 mb16">
+						<div class="col-xs-2" t-if="o.name">
+							<strong>Keterangan:</strong>
+							<p t-field="o.name"/>
+						</div>
+						<div class="col-xs-2" t-if="o.date_invoice">
+							<strong>Tanggal Invoice:</strong>
+							<p t-field="o.date_invoice"/>
+						</div>
+						<div class="col-xs-2" t-if="o.origin">
+							<strong>Sumber:</strong>
+							<p t-field="o.origin"/>
+						</div>
+						<div class="col-xs-2" t-if="o.partner_id.ref">
+							<strong>Kode Pelanggan:</strong>
+							<p t-field="o.partner_id.ref"/>
+						</div>
+						<div class="col-xs-2" t-if="o.reference">
+							<strong>Referensi:</strong>
+							<p t-field="o.reference"/>
+						</div>
+					</div>
+
+					<table class="table table-condensed">
+						<thead>
+							<tr>
+								<th>Keterangan</th>
+								<th>Qty</th>
+								<th class="text-right">Harga Satuan</th>
+								<th class="text-right" groups="sale.group_discount_per_so_line">Diskon (%)</th>
+								<!-- <th class="text-right">Taxes</th> -->
+								<th class="text-right">Jumlah</th>
+							</tr>
+						</thead>
+						<tbody class="invoice_tbody">
+							<tr t-foreach="o.invoice_line" t-as="l">
+								<td><span t-field="l.name"/></td>
+								<td>
+									<span t-field="l.quantity"/>
+									<span t-field="l.uos_id"  groups="product.group_uom"/>
+								</td>
+								<td class="text-right">
+									<span t-field="l.price_unit"/>
+								</td>
+								<td class="text-right" groups="sale.group_discount_per_so_line"><span t-field="l.discount"/></td>
+								<!-- <td class="text-right">
+									<span t-esc="', '.join(map(lambda x: x.name, l.invoice_line_tax_id))"/>
+								</td> -->
+								<td class="text-right">
+									<span t-field="l.price_subtotal" 
+                                t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="row">
+						<div class="col-xs-4 pull-right">
+							<table class="table table-condensed">
+								<tr class="border-black">
+									<td><strong>Sub Total</strong></td>
+									<td class="text-right">
+										<span t-field="o.amount_untaxed" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+									</td>
+								</tr>
+								<tr t-if="o.amount_tax">
+									<td>PPN</td>
+									<td class="text-right">
+										<span t-field="o.amount_tax" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+									</td>
+								</tr>
+								<tr class="border-black">
+									<td><strong>Grand Total</strong></td>
+									<td class="text-right">
+										<span t-field="o.amount_total" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+
+					<div class="row" t-if="o.tax_line">
+						<div class="col-xs-6">
+							<table class="table table-condensed">
+								<thead>
+									<tr>
+										<th>Pajak</th>
+										<th class="text-right">Base</th>
+										<th class="text-right">Amount</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr t-foreach="o.tax_line" t-as="t">
+										<td><span t-field="t.name"/></td>
+										<td class="text-right">
+											<span t-field="t.base"
+											t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+										</td>
+										<td class="text-right">
+											<span t-field="t.amount"
+											t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<p t-if="o.comment">
+						<strong>Komentar:</strong>
+						<span t-field="o.comment"/>
+					</p>
+					<p t-if="o.payment_term.note">
+						<strong>Payment Term:</strong>
+						<span t-field="o.payment_term.note"/>
+					</p>
+					<p t-if="o.fiscal_position.note">
+						<strong>Fiscal Position Remark:</strong>
+						<span t-field="o.fiscal_position.note"/>
+					</p>
+					<p t-if="o.amount_total">
+						<strong>Terbilang:</strong>
+				        # <span t-esc="o.amount_to_text(o.amount_total, 'idr')"/> #
+					</p>
+
+				</div>
+			</t>    
+		</template>
+
+		<template id="recore_test_pagination.test_pagination_external_layout">
+			<!-- Multicompany -->
+			<t t-if="o and 'company_id' in o">
+				<t t-set="company" t-value="o.company_id"></t>
+			</t>
+			<t t-if="not o or not 'company_id' in o">
+				<t t-set="company" t-value="res_company"></t>
+			</t>
+
+			<t t-call="recore_test_pagination.test_pagination_external_layout_header" />
+			<t t-raw="0" />
+			<t t-call="recore_test_pagination.test_pagination_external_layout_footer" />
+		</template>
+
+		<template id="recore_test_pagination.test_pagination_external_layout_header">
+			<div class="header">
+				<div class="row">
+					<div class="col-xs-3">
+						<img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 45px;"/>
+					</div>
+					<div class="col-xs-9 text-right" style="margin-top:20px;" t-field="o.number" />
+					<!-- <div class="col-xs-9 text-right" style="margin-top:20px;" t-field="company.rml_header1"/> -->
+				</div>
+				<div class="row zero_min_height">
+					<div class="col-xs-12">
+						<div style="border-bottom: 1px solid black;"></div>
+					</div>
+				</div>
+				<!-- <div class="row">
+					<div class="col-xs-3">
+						<div t-field="company.partner_id" 
+                    t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'
+                    style="border-bottom: 1px solid black;"/>
+					</div>
+				</div> -->
+			</div>
+		</template>
+
+		<template id="recore_test_pagination.test_pagination_external_layout_footer">
+			<div class="footer">
+				<div class="text-center" style="border-top: 1px solid black;">
+					<ul t-if="not company.custom_footer" class="list-inline">
+						<li t-if="company.phone">Phone: <span t-field="company.phone"/></li>
+
+						<li t-if="company.fax and company.phone">&amp;bull;</li>
+						<li t-if="company.fax">Fax: <span t-field="company.fax"/></li>
+
+						<li t-if="company.email">&amp;bull;</li>
+						<li t-if="company.email">Email: <span t-field="company.email"/></li>
+
+						<li t-if="company.website">&amp;bull;</li>
+						<li t-if="company.website">Website: <span t-field="company.website"/></li>
+					</ul>
+
+					<t t-if="company.custom_footer">
+						<span t-raw="company.rml_footer"/>
+					</t>
+
+					<ul class="list-inline">
+						<li>Page:</li>
+						<li><span class="page"/></li>
+						<li>/</li>
+						<li><span class="topage"/></li>
+					</ul>
+				</div>
+			</div>      
+		</template>
+
+		<!-- <template id="report_test_pagination_document">
+			<t t-call="recore_test_pagination.test_pagination_layout">
+				<div class="page">
+				</div>
+			</t>
+		</template>
+ -->
+		<template id="report_test_pagination">
+			<t t-call="report.html_container">
+				<t t-foreach="doc_ids" t-as="doc_id">
+					<t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'recore_test_pagination.report_test_pagination_document')"/>
+				</t>
+			</t>
+		</template>
+
+	</data>
+</openerp>
