@@ -3,12 +3,12 @@
     <data>
 
         <report
-            id="test_pagination"
+            id="faktur_penjualan"
             model="account.invoice"
             string="Test Faktur"
             report_type="qweb-pdf"
-            name="recore_test_pagination.report_test_pagination"
-            file="report_test_pagination"
+            name="recore_faktur_penjualan.report_faktur_penjualan"
+            file="report_faktur_penjualan"
             attachment_use="True"
             attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"
         />
@@ -29,8 +29,8 @@
 			<field name="dpi">90</field>
 		</record>
 		
-		<record id="recore_test_pagination.test_pagination" model="ir.actions.report.xml">
-			<field name="paperformat_id" ref="recore_test_pagination.continous_paper_lx300" />
+		<record id="recore_faktur_penjualan.faktur_penjualan" model="ir.actions.report.xml">
+			<field name="paperformat_id" ref="recore_faktur_penjualan.continous_paper_lx300" />
 		</record>
 
     </data>

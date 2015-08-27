@@ -18,17 +18,16 @@
 #                                                                            #
 
 {
-	"name": "Test Pagination",
+	"name": "Faktur Penjualan",
 	"version": "1.0.0",
 	"author": "Budi Hartono",
 	"depends": ["account", "report", "recore_terbilang"],
 	"category": "",
-	"description": """Test Pagination untuk Laporan.
-	""",
+	"description": """Faktur penjualan sederhana sebagai pilihan untuk mencetak Invoice.""",
 	"website": "http://www.recoremedia.com",
 	"data": [
-        "test_pagination_report.xml",
-        "views/test_pagination.xml"
+        "faktur_penjualan_report.xml",
+        "views/faktur_penjualan.xml"
     ],
 	"installable": True,
 	"active": False,
