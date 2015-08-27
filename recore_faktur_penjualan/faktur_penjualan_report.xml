@@ -5,7 +5,7 @@
         <report
             id="faktur_penjualan"
             model="account.invoice"
-            string="Test Faktur"
+            string="Faktur Penjualan"
             report_type="qweb-pdf"
             name="recore_faktur_penjualan.report_faktur_penjualan"
             file="report_faktur_penjualan"
