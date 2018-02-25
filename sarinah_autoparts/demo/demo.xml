@@ -1,0 +1,52 @@
+<odoo>
+    <data>
+        <!--  -->
+        <!--   <record id="object0" model="sarinah_autoparts.sarinah_autoparts"> -->
+        <!--     <field name="name">Object 0</field> -->
+        <!--     <field name="value">0</field> -->
+        <!--   </record> -->
+        <!--  -->
+        <!--   <record id="object1" model="sarinah_autoparts.sarinah_autoparts"> -->
+        <!--     <field name="name">Object 1</field> -->
+        <!--     <field name="value">10</field> -->
+        <!--   </record> -->
+        <!--  -->
+        <!--   <record id="object2" model="sarinah_autoparts.sarinah_autoparts"> -->
+        <!--     <field name="name">Object 2</field> -->
+        <!--     <field name="value">20</field> -->
+        <!--   </record> -->
+        <!--  -->
+        <!--   <record id="object3" model="sarinah_autoparts.sarinah_autoparts"> -->
+        <!--     <field name="name">Object 3</field> -->
+        <!--     <field name="value">30</field> -->
+        <!--   </record> -->
+        <!--  -->
+        <!--   <record id="object4" model="sarinah_autoparts.sarinah_autoparts"> -->
+        <!--     <field name="name">Object 4</field> -->
+        <!--     <field name="value">40</field> -->
+        <!--   </record> -->
+        <!--  -->
+        <record id="brand01" model="autopart.brand">
+            <field name="name">Bosch</field>
+        </record>
+        <record id="brand02" model="autopart.brand">
+            <field name="name">Daytona</field>
+        </record>
+
+        <record id="vehiclebrand01" model="autopart.vehiclebrand">
+            <field name="name">Honda</field>
+        </record>
+        <record id="vehiclebrand02" model="autopart.vehiclebrand">
+            <field name="name">Toyota</field>
+        </record>
+
+        <record id="vehiclemodel01" model="autopart.vehiclemodel">
+            <field name="name">Jazz 2001</field>
+            <field name="vehiclebrand_id">Honda</field>
+        </record>
+        <record id="vehiclemodel02" model="autopart.vehiclemodel">
+            <field name="name">Yaris 2006-2013</field>
+            <field name="vehiclebrand_id">Toyota</field>
+        </record>
+    </data>
+</odoo>
