@@ -30,6 +30,9 @@
             <field name="name">Bosch</field>
         </record>
         <record id="brand02" model="autopart.brand">
+            <field name="name">Corsa</field>
+        </record>
+        <record id="brand03" model="autopart.brand">
             <field name="name">Daytona</field>
         </record>
 
@@ -38,15 +41,6 @@
         </record>
         <record id="vehiclebrand02" model="autopart.vehiclebrand">
             <field name="name">Toyota</field>
-        </record>
-
-        <record id="vehiclemodel01" model="autopart.vehiclemodel">
-            <field name="name">Jazz 2001</field>
-            <field name="vehiclebrand_id">Honda</field>
-        </record>
-        <record id="vehiclemodel02" model="autopart.vehiclemodel">
-            <field name="name">Yaris 2006-2013</field>
-            <field name="vehiclebrand_id">Toyota</field>
         </record>
     </data>
 </odoo>

@@ -6,8 +6,8 @@
         This module adds new menu called Spare Part. It adds Merk Kendaraan, Model Kendaraan and Merk Spare Part fields to product.""",
 
     'description': """
-        Add 'Merk Kendaraan' and 'Tipe Kendaraan' fields to product. 
-        This allows Sarinah Motor to organize their products based on 'Merk Kendaraan' and 'Tipe Kendaraan'.
+        This module adds new menu called Spare Part. It adds Merk Kendaraan, Model Kendaraan and Merk Spare Part. 
+        This allows Sarinah Motor to organize their products based on Merk Kendaraan, Model Kendaraan and Merk Spare Part.
     """,
 
     'author': "Budi Hartono",
@@ -26,8 +26,9 @@
     'data': [
         # 'security/ir.model.access.csv',
         'views/views.xml',
-        'views/autopart_spec.xml',
         # 'views/templates.xml',
+        'views/autopart_spec.xml',
+        'views/autopart_report_saleorder_document.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

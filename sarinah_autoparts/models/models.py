@@ -36,7 +36,8 @@ class AutopartVehicleModel(models.Model):
     name = fields.Char('Model Kendaraan', required=True)
     vehiclebrand_id = fields.Many2one(
         'autopart.vehiclebrand', string='Merk Kendaraan',
-        ondelete='cascade'
+        ondelete='cascade',
+        required=True
     )
     autopart_vehiclebrand_id = fields.Char('Merk Kendaraan', related='vehiclebrand_id.name')
     product_ids = fields.One2many(
@@ -69,3 +70,47 @@ class ProductPartBrand(models.Model):
 
     # How to do it:
     # https://www.odoo.com/forum/help-1/question/showing-many2one-fields-in-other-modules-102434
+
+
+class ProductPartBrandSaleOrder(models.Model):
+    _inherit = 'sale.order.line'
+    
+    autopart_brand_id = fields.Many2one(
+        related='product_id.autopart_brand_id', 
+    )
+    autopart_vehiclemodel_id = fields.Many2one(
+        related='product_id.autopart_vehiclemodel_id', 
+    )
+
+class ProductPartBrandInvoiceForm(models.Model):
+    _inherit = 'account.invoice.line'
+
+    autopart_brand_id = fields.Many2one(
+        related='product_id.autopart_brand_id', 
+    )
+    autopart_vehiclemodel_id = fields.Many2one(
+        related='product_id.autopart_vehiclemodel_id', 
+    )
+
+    # autopart_brand = fields.Char(
+    #     related='autopart_brand_id.autopart_brand_id',
+    # )
+
+# class ProductPartBrandInvoiceForm(models.Model):
+#     _inherit = 'account.invoice.line'
+
+#     autopart_brand_id = fields.Char(
+#         'Merk Part', 
+#         related='product_id.autopart_brand_id', # Retrieve from Vehicle Model instead of directly access the Vehicle Brand Table
+#         readonly=True
+#     )
+#     autopart_vehiclebrand_id = fields.Char( 
+#         'Merk Kendaraan', 
+#         related='product_id.autopart_vehiclebrand_id', # Retrieve from Vehicle Model instead of directly access the Vehicle Brand Table
+#         readonly=True
+#     )
+#     autopart_vehiclemodel_id = fields.Char(
+#         'Model Kendaraan', 
+#         related='product_id.autopart_vehiclemodel_id', # Retrieve from Vehicle Model instead of directly access the Vehicle Brand Table
+#         readonly=True
+#     )
