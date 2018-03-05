@@ -21,6 +21,8 @@
             name="Spare Part"
             parent=""
             sequence="4"
+            web_icon="sarinah_autoparts,static/description/menu_icon.png"
+            groups="base.group_user"
         />
         <menuitem
             id="autopart_brand_menu"
@@ -28,6 +30,7 @@
             action="autopart_brand_action"
             parent="autopart_spec_menu"
             sequence="5"
+            groups="base.group_user"
         />
         <menuitem
             id="autopart_vehiclebrand_menu"
@@ -35,6 +38,7 @@
             action="autopart_vehiclebrand_action"
             parent="autopart_spec_menu"
             sequence="6"
+            groups="base.group_user"
         />
         <menuitem
             id="autopart_vehiclemodel_menu"
@@ -42,6 +46,7 @@
             action="autopart_vehiclemodel_action"
             parent="autopart_spec_menu"
             sequence="6"
+            groups="base.group_user"
         />
 
         <!-- Merk Spare Part -->
