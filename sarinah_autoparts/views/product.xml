@@ -2,18 +2,31 @@
     <data>
         <!-- Product View -->
         <record model="ir.ui.view" id="product_brand_view_form">
-            <field name="name">product brand view</field>
+            <field name="name">Product Brand View</field>
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_form_view" />
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='categ_id']" position="after">          
                     <field name="autopart_brand_id" help="Merk part adalah merk pembuat part."/>
                     <field name="autopart_part_number" help="Nomor part produk ini."/>
-                    <!-- <field name="autopart_vehicletype_id" help="Model kendaraan yang kompatibel dengan produk ini."/> -->
                     <field name="autopart_vehicletype_ids"/>
                 </xpath>
             </field>
         </record>
+
+        <!-- <record id="view_product_template_search_brand" model="ir.ui.view">
+            <field name="name">product.template.search.brand</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_search_view"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="autopart_brand_id"/>
+                    <filter string="Brand" name="groupby_brand" domain="[]"
+                            context="{'group_by' : 'autopart_brand_id'}"/>
+                    <separator/>
+                </field>
+            </field>
+        </record> -->
 
         <!-- Sales Order View -->
         <!-- !!Warning: do not use sale.order.line -->

@@ -36,43 +36,6 @@
             </search>
         </field>
     </record>
-
-    <!-- Vehicle Brand Tree View -->
-    <record model="ir.ui.view" id="sarinah_autoparts.autopart_vehiclebrand_tree">
-        <field name="name">Merk Kendaraan</field>
-        <field name="model">autopart.vehiclebrand</field>
-        <field name="arch" type="xml">
-            <tree>
-                <field name="name"/>
-            </tree>
-        </field>
-    </record>
-
-    <!-- Vehicle Brand Form View -->
-    <record model="ir.ui.view" id="sarinah_autoparts.autopart_vehiclebrand_form">
-        <field name="name">Merk Kendaraan</field>
-        <field name="model">autopart.vehiclebrand</field>
-        <field name="arch" type="xml">
-            <form>
-                <sheet>
-                    <group>
-                        <field name="name"/>
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
-
-    <!-- Vehicle Brand Search View -->
-    <record model="ir.ui.view" id="sarinah_autoparts.autopart_vehiclebrand_search">
-        <field name="name">Merk Kendaraan</field>
-        <field name="model">autopart.vehiclebrand</field>
-        <field name="arch" type="xml">
-            <search>
-                <field name="name"/>
-            </search>
-        </field>
-    </record>
    
    <!-- Vehicle Type Tree View -->
     <record model="ir.ui.view" id="sarinah_autoparts.autopart_vehicletype_tree">
@@ -80,7 +43,6 @@
         <field name="model">autopart.vehicletype</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="vehiclebrand_id"/>
                 <field name="name"/>
             </tree>
         </field>
@@ -94,8 +56,7 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="vehiclebrand_id"/>
-                        <field name="name"/>
+                        <field name="name" placeholder="Misal: Honda Jazz 2003"/>
                     </group>
                 </sheet>
             </form>
@@ -108,7 +69,6 @@
         <field name="model">autopart.vehicletype</field>
         <field name="arch" type="xml">
             <search>
-                <field name="vehiclebrand_id"/>
                 <field name="name"/>
             </search>
         </field>
@@ -118,12 +78,6 @@
     <record model="ir.actions.act_window" id="sarinah_autoparts.autopart_brand_action_window">
         <field name="name">Merk Spare Part</field>
         <field name="res_model">autopart.brand</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-    <!-- actions opening views on models -->
-    <record model="ir.actions.act_window" id="sarinah_autoparts.autopart_vehiclebrand_action_window">
-        <field name="name">Merk Kendaraan</field>
-        <field name="res_model">autopart.vehiclebrand</field>
         <field name="view_mode">tree,form</field>
     </record>
     <!-- actions opening views on models -->
@@ -146,13 +100,9 @@
                 action="sarinah_autoparts.autopart_brand_action_window"
                 sequence="11"
                 groups="base.group_user"/>
-    <menuitem   name="Merk Kendaraan" id="sarinah_autoparts.autopart_vehiclebrand_menu" parent="sarinah_autoparts.menu_root"
-                action="sarinah_autoparts.autopart_vehiclebrand_action_window"
-                sequence="12"
-                groups="base.group_user"/>
     <menuitem   name="Tipe Kendaraan" id="sarinah_autoparts.autopart_vehicletype_menu" parent="sarinah_autoparts.menu_root"
                 action="sarinah_autoparts.autopart_vehicletype_action_window"
-                sequence="13"
+                sequence="12"
                 groups="base.group_user"/>
     </data>
 </odoo>

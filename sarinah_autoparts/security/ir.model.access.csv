@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_sarinah_autoparts_sarinah_autoparts,sarinah_autoparts.sarinah_autoparts,model_sarinah_autoparts_sarinah_autoparts,,1,0,0,0
+access_sarinah_autoparts_sarinah_autoparts.brand,sarinah_autoparts.sarinah_autoparts.brand,sarinah_autoparts.model_autopart_brand,,1,1,1,1
+access_sarinah_autoparts_sarinah_autoparts.vehicletype,sarinah_autoparts.sarinah_autoparts.vehicletype,sarinah_autoparts.model_autopart_vehicletype,,1,1,1,1
+
