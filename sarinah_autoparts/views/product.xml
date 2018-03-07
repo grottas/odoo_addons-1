@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+        <!-- Product View -->
+        <record model="ir.ui.view" id="product_brand_view_form">
+            <field name="name">product brand view</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='categ_id']" position="after">          
+                    <field name="autopart_brand_id" help="Merk part adalah merk pembuat part."/>
+                    <field name="autopart_part_number" help="Nomor part produk ini."/>
+                    <!-- <field name="autopart_vehicletype_id" help="Model kendaraan yang kompatibel dengan produk ini."/> -->
+                    <field name="autopart_vehicletype_ids"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Sales Order View -->
+        <!-- !!Warning: do not use sale.order.line -->
+        <!-- <record model="ir.ui.view" id="sale_order_view_inherit">
+            <field name="name">sale.order.view.inherit_brand</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='name']" position="after">
+                    <field name="autopart_brand_id" help="Merk part adalah merk pembuat part."/>
+                    <field name="autopart_vehiclemodel_id" help="Model kendaraan yang kompatibel dengan produk ini."/>
+                </xpath>
+            </field>
+        </record> -->
+
+        <!-- Invoice Form View -->
+        <!-- <record model="ir.ui.view" id="invoice_form_inherit">
+            <field name="name">account.invoice.form.view.inherit_brand</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/notebook/page/field[@name='invoice_line_ids']/tree/field[@name='name']" position="after">
+                    <field name="autopart_brand_id" help="Merk part adalah merk pembuat part."/>
+                    <field name="autopart_vehiclemodel_id" help="Model kendaraan yang kompatibel dengan produk ini."/>
+                </xpath>
+            </field>
+        </record> -->
+    </data>
+</odoo>

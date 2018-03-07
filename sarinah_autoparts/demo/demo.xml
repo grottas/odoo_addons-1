@@ -26,21 +26,5 @@
         <!--     <field name="value">40</field> -->
         <!--   </record> -->
         <!--  -->
-        <record id="brand01" model="autopart.brand">
-            <field name="name">Bosch</field>
-        </record>
-        <record id="brand02" model="autopart.brand">
-            <field name="name">Corsa</field>
-        </record>
-        <record id="brand03" model="autopart.brand">
-            <field name="name">Daytona</field>
-        </record>
-
-        <record id="vehiclebrand01" model="autopart.vehiclebrand">
-            <field name="name">Honda</field>
-        </record>
-        <record id="vehiclebrand02" model="autopart.vehiclebrand">
-            <field name="name">Toyota</field>
-        </record>
     </data>
 </odoo>
