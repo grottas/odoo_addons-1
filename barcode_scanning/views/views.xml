@@ -1,0 +1,71 @@
+<odoo>
+  <data>
+    <!-- Sales Order View -->
+    <record model="ir.ui.view" id="sale_order_view_inherit">
+        <field name="name">sale.order.view.inherit_barcode_scan</field>
+        <field name="model">sale.order</field> <!-- !!Warning: do not use sale.order.line -->
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+          <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='product_id']" position="before">
+            <field name="barcode_scan" help="Here you can provide the barcode for the product"/>
+          </xpath>
+        </field>
+    </record>
+    <!-- explicit list view definition -->
+    <!--
+    <record model="ir.ui.view" id="sarinah_barcode_scanning.list">
+      <field name="name">sarinah_barcode_scanning list</field>
+      <field name="model">sarinah_barcode_scanning.sarinah_barcode_scanning</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="sarinah_barcode_scanning.action_window">
+      <field name="name">sarinah_barcode_scanning window</field>
+      <field name="res_model">sarinah_barcode_scanning.sarinah_barcode_scanning</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="sarinah_barcode_scanning.action_server">
+      <field name="name">sarinah_barcode_scanning server</field>
+      <field name="model_id" ref="model_sarinah_barcode_scanning_sarinah_barcode_scanning"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="sarinah_barcode_scanning" id="sarinah_barcode_scanning.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="sarinah_barcode_scanning.menu_1" parent="sarinah_barcode_scanning.menu_root"/>
+    <menuitem name="Menu 2" id="sarinah_barcode_scanning.menu_2" parent="sarinah_barcode_scanning.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="sarinah_barcode_scanning.menu_1_list" parent="sarinah_barcode_scanning.menu_1"
+              action="sarinah_barcode_scanning.action_window"/>
+    <menuitem name="Server to list" id="sarinah_barcode_scanning" parent="sarinah_barcode_scanning.menu_2"
+              action="sarinah_barcode_scanning.action_server"/>
+    -->
+  </data>
+</odoo>
