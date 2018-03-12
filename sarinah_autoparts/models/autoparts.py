@@ -25,4 +25,4 @@ class AutopartBrand(models.Model):
 class AutopartVehicleType(models.Model):
     _name = 'autopart.vehicletype'
 
-    name = fields.Char('Model Kendaraan', required=True)
+    name = fields.Char('Tipe Kendaraan', required=True)
