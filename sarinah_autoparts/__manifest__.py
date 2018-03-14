@@ -17,7 +17,7 @@
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'Sales',
-    'version': '0.5',
+    'version': '0.6',
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'sale'],
@@ -29,6 +29,7 @@
         'views/templates.xml',
         'views/autopart.xml',
         'views/product.xml',
+        'views/vendorbill.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
