@@ -3,11 +3,13 @@
     'name': "Sarinah Autoparts Module",
 
     'summary': """
-        This module adds new menu called Spare Part. It adds Merk Kendaraan, Model Kendaraan and Merk Spare Part fields to product.""",
+        This module adds new menu called Spare Part. It adds Tipe Kendaraan and Merk Spare Part fields to product.""",
 
     'description': """
-        This module adds new menu called Spare Part. It adds Merk Kendaraan, Model Kendaraan and Merk Spare Part. 
-        This allows Sarinah Motor to organize their products based on Merk Kendaraan, Model Kendaraan and Merk Spare Part.
+        This module adds new menu called Spare Part and modify some views and reports in Odoo. This module is developed
+        to adapt Sarinah Motor Semarang business.
+
+        This module is developed by Recore.
     """,
 
     'author': "Budi Hartono",
@@ -17,7 +19,7 @@
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'Sales',
-    'version': '0.6',
+    'version': '1.0',
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'sale'],
@@ -30,6 +32,7 @@
         'views/autopart.xml',
         'views/product.xml',
         'views/vendorbill.xml',
+        'views/customerinvoice.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
