@@ -37,7 +37,7 @@
         </field>
     </record>
    
-   <!-- Vehicle Type Tree View -->
+    <!-- Vehicle Type Tree View -->
     <record model="ir.ui.view" id="sarinah_autoparts.autopart_vehicletype_tree">
         <field name="name">Tipe Kendaraan</field>
         <field name="model">autopart.vehicletype</field>

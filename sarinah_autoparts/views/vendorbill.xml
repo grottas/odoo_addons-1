@@ -10,5 +10,18 @@
                 </xpath>
             </field>
         </record>
+        <!-- account.view_account_payment_invoice_form -->
+        <record model="ir.ui.view" id="giro_account_payment_invoice_form">
+            <field name="name">Giro Number in Payment</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_invoice_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='communication']" position="after">
+                    <field name="journal_name" invisible="1" />
+                    <field name="giro_number" help="Masukkan nomor giro jika ada." 
+                            attrs="{'invisible': [('journal_name', 'in', ['Bank','Cash'])]}"/>
+                </xpath>
+            </field>
+        </record>
     </data>
 </odoo>

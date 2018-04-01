@@ -19,7 +19,7 @@
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'Sales',
-    'version': '1.0',
+    'version': '1.1',
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'sale'],
@@ -33,6 +33,7 @@
         'views/product.xml',
         'views/vendorbill.xml',
         'views/customerinvoice.xml',
+        'views/searchfilters.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <record id="sarinah_view_account_invoice_filter" model="ir.ui.view">
+            <field name="name">account.invoice.period</field>
+            <!-- Name should not contain whitespace -->
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="arch" type="xml">
+            <field name="number" position="before">
+                <filter icon="terp-go-month" string="Current Month" name="month" domain="[('date_invoice','&lt;=',(datetime.date.today()+relativedelta(day=31)).strftime('%Y-%m-%d')),('date_invoice','&gt;=',(datetime.date.today()-relativedelta(day=1)).strftime('%Y-%m-%d'))]" help="Current Month"/>
+                <filter icon="terp-go-month" string="Previous Month" name="prev_month" domain="[('date_invoice','&gt;=',(context_today()-relativedelta(months=1)).strftime('%Y-%m-01')),('date_invoice','&lt;',time.strftime('%Y-%m-01'))]"/>
+            </field>
+            </field>
+        </record>
+    </data>
+</odoo>
