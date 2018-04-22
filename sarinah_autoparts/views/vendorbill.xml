@@ -12,14 +12,28 @@
         </record>
         <!-- account.view_account_payment_invoice_form -->
         <record model="ir.ui.view" id="giro_account_payment_invoice_form">
-            <field name="name">Giro Number in Payment</field>
+            <field name="name">Giro Number in Payment Widget</field>
             <field name="model">account.payment</field>
             <field name="inherit_id" ref="account.view_account_payment_invoice_form" />
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='communication']" position="after">
                     <field name="journal_name" invisible="1" />
-                    <field name="giro_number" help="Masukkan nomor giro jika ada." 
-                            attrs="{'invisible': [('journal_name', 'in', ['Bank','Cash'])]}"/>
+                    <field name="giro_number" help="Masukkan nomor giro" 
+                            attrs="{'invisible': [('journal_name', 'in', ['Bank','Cash','Kas'])]}"/>
+                    <field name="giro_create_date" widget="date" help="Masukkan tanggal pembuatan giro (bukan tanggal jatuh tempo)" 
+                            attrs="{'invisible': [('journal_name', 'in', ['Bank','Cash','Kas'])]}"/>
+                </xpath>
+            </field>
+        </record>
+        <!-- account.view_account_payment_form -->
+        <record model="ir.ui.view" id="giro_account_payment_form">
+            <field name="name">Giro Number in Payment Form</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='communication']" position="after">
+                    <field name="giro_number" attrs="{'invisible': [('state', '!=', 'draft'), ('giro_number', '=', False)], 'readonly': [('state', '!=', 'draft')]}"/>
+                    <field name="giro_create_date" attrs="{'invisible': [('state', '!=', 'draft'), ('giro_create_date', '=', False)], 'readonly': [('state', '!=', 'draft')]}"/>
                 </xpath>
             </field>
         </record>
